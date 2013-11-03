@@ -9,8 +9,8 @@
 
 public class Dice {
 
-    private int faceVal; // declaration de la variable qui stock la valeur de la face du de
-    private final int MAX_FACES;    // constante pour le nombre de faces
+    private int faceVal;            // declaration de la variable qui stock la valeur de la face du de
+    private final int MAX_FACES;    // constante pour le nombre de faces (no magic numbers)
 
     /* constructeur de classe */
     public Dice() {

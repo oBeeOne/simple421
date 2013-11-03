@@ -2,7 +2,7 @@
 *   Classe Gobelet
 *
 *   - contient 2 dés
-*   - lance les dés
+*   - lance les dés et retourne un tableau des resultats
 *
 */
 public class Pot {
@@ -28,7 +28,6 @@ public class Pot {
             retval[i] = d.roll();           // on lance le de
             i++;
         }
-
         return retval;                      // on retourne les resultats de chaque de
     }
 

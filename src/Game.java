@@ -20,17 +20,12 @@ public class Game {
 
     /* constructeur */
     public Game() {
-        names = new String[3];                                  // initialisation du tableau des noms à 3
+        names = new String[]{"Riri", "Fifi", "Loulou"};         // initialisation et remplissage du tableau des noms
         players = new Player[3];                                // initialisation du tableau des joueurs à 3
         pot = new Pot();                                        // instanciation de l'objet gobelet
         result = new Integer[3];                                // instanciation du tableau des resultats
         rule = new Rules();                                     // instanciation des regles
         win = false;                                            // initialisation de la variable de victoire à false
-
-        /* remplissage du tableau des noms */
-        names[0] = "Riri";
-        names[1] = "Fifi";
-        names[2] = "Loulou";
 
         /* creation de chaque joueur et affectation du nom pour chacun */
         Player j;
@@ -45,29 +40,25 @@ public class Game {
     public void playGame() {
 
         /* on joue tant qu'il n'y a pas de gagnant */
-        while (!win) {
+        /* pour chaque joueur du tableau... */
+        while (!win) for (Player p : players) {
+            System.out.println(p.getName() + " lance les dés...");
 
-            /* pour chaque joueur du tableau... */
-            for (Player p : players) {
-                System.out.println(p.getName() + " lance les dés...");
+            result = pot.playRound();                       // le joueur lance les des
 
-                result = pot.playRound();                       // le joueur lance les des
+            for (int r : result)                            // pour chaque valeur de resultat
+                System.out.println(r);                      // on affiche la valeur
 
-                for (int r : result)                            // pour chaque valeur de resultat
-                    System.out.println(r);                      // on affiche la valeur
+            if (rule.checkResult(result))                   // on verifie les resultats
+                p.incScore();                               // si 421 alors le score du joueur augmente
 
-                if (rule.checkResult(result)) {                 // on verifie les resultats
-                    p.incScore();                               // si 421 alors le score du joueur augmente
-                }
+            System.out.println("Score = " + p.getScore());    // on affiche le score du joueur
 
-                System.out.println("Score = "+p.getScore());    // on affiche le score du joueur
-
-                /* si le joueur a gagné... */
-                if (rule.isWinner(p.getScore())) {
-                    win = true;
-                    System.out.println(p.getName()+" a remporté la partie !");
-                    break;
-                }
+            /* si le joueur a gagné... */
+            if (rule.isWinner(p.getScore())) {
+                win = true;
+                System.out.println(p.getName() + " a remporté la partie !");
+                break;
             }
         }
     }

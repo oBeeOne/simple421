@@ -20,10 +20,8 @@ public class Rules {
 
     /* methode de verification si la valeur du dé est différente de 1, 2 et 4 */
     public boolean notInArray(int val) {
-        if (val!=rule[0] && val!=rule[1] && val!=rule[2])
-            return true;
-        return false;
-    }
+       return (val!=rule[0] && val!=rule[1] && val!=rule[2]);
+   }
 
     /* methode de verification du resultat */
     public boolean checkResult(Integer[] array) {
@@ -31,7 +29,7 @@ public class Rules {
             if (notInArray(array[i]))
                 return false;
             for (int n = 0; n < i; n++) {
-                if (array[i] == array[n]) {
+                if (array[i].equals(array[n])) {
                     return false;
                 }
             }

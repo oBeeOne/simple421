@@ -19,7 +19,7 @@ public class Rules {
     }
 
     /* methode de verification si la valeur du dé est différente de 1, 2 et 4 */
-    public boolean notInArray(int val) {
+    private boolean notInArray(int val) {
        return (val!=rule[0] && val!=rule[1] && val!=rule[2]);
    }
 
